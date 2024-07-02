@@ -23,6 +23,7 @@ struct Tile
 	Direction direction = Direction::None;
 };
 
+// TileMap is an array with 2 dimension.
 typedef std::vector<std::vector<Tile>> TileMap;
 
 #endif // !_TILE_H_

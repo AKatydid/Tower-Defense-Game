@@ -1,13 +1,15 @@
 #include "entity/map.h"
 
-bool Map::load(const std::string& path) {
+bool Map::load(const std::string& path) 
+{
 	std::ifstream file(path);
 
 	if (!file.good()) return false;
 
 	int ind_x = -1, ind_y = -1;
 	std::string str_line;
-	while (std::getline(file, str_line)) {
+	while (std::getline(file, str_line)) 
+	{
 		str_line = trim_str(str_line);
 		if (str_line.empty())
 			continue;
@@ -65,8 +67,8 @@ void Map::load_tile_from_string(Tile& tile, const std::string& str)
 	tile.special_flag = (values.size() <= 3) ? -1 : values[3];
 }
 
-
-void Map::generate_map_cache() {
+void Map::generate_map_cache() 
+{
 	for (int y = 0; y < get_height(); y++)
 	{
 		for (int x = 0; x < get_width(); x++)
@@ -75,10 +77,16 @@ void Map::generate_map_cache() {
 			if (tile.special_flag < 0)
 				continue;
 
+			// House
 			if (tile.special_flag == 0)
 			{
 				m_ind_home.x = x;
 				m_ind_home.y = y;
+			}
+			// save the path of Monster_Brush_Point to House
+			else 
+			{
+				m_spwaner_route_pool[tile.special_flag] = Route(m_tile_map, { x, y });
 			}
 		}
 	}
@@ -92,4 +100,19 @@ size_t Map::get_width() const
 size_t Map::get_height() const
 {
 	return m_tile_map.size();
+}
+
+const TileMap& Map::get_tile_map() const
+{
+	return m_tile_map;
+}
+
+const SpawnerRoutePool& Map::get_idx_spawner_pool() const 
+{
+	return m_spwaner_route_pool;
+}
+
+void Map::place_tower(const SDL_Point& idx_tile)
+{
+	m_tile_map[idx_tile.y][idx_tile.x].has_tower = true;
 }
