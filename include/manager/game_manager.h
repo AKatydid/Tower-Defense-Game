@@ -2,6 +2,9 @@
 #define _GAME_MANAGER_H_
 
 #include "manager/manager.h"
+#include "manager/config_manager.h"
+#include "manager/resource_manager.h"
+#include "entity/map.h"
 
 #include "utils/config.h"
 
@@ -31,10 +34,14 @@ private:
 
 	void on_render();
 
+	bool generate_tile_map_texture();
+
 private:
 	SDL_Window* m_window;
 	SDL_Renderer* m_render;
 	SDL_Event m_event;
+
+	SDL_Texture* m_tex_tile_map;
 
 	bool m_terminal;
 };

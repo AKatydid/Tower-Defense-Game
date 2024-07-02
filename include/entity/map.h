@@ -20,8 +20,9 @@ public:
 	// load map data
 	bool load(const std::string& path);
 
-	size_t Map::get_width() const;
-	size_t Map::get_height() const;
+	size_t get_width() const;
+	size_t get_height() const;
+	const SDL_Point& get_idx_home() const;
 	const TileMap& get_tile_map() const;
 	const SpawnerRoutePool& get_idx_spawner_pool() const;
 	void place_tower(const SDL_Point& idn_tile);

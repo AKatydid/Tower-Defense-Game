@@ -26,6 +26,8 @@ bool Map::load(const std::string& path)
 			load_tile_from_string(tile, str_tile);
 		}
 	}
+	generate_map_cache();
+	return true;
 }
 
 std::string Map::trim_str(const std::string& str)
@@ -100,6 +102,11 @@ size_t Map::get_width() const
 size_t Map::get_height() const
 {
 	return m_tile_map.size();
+}
+
+const SDL_Point& Map::get_idx_home() const
+{
+	return m_ind_home;
 }
 
 const TileMap& Map::get_tile_map() const
