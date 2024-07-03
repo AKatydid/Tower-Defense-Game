@@ -28,7 +28,8 @@ GameManager::GameManager() {
 	m_terminal = false;
 }
 
-GameManager::~GameManager() {
+GameManager::~GameManager() 
+{
 	SDL_DestroyRenderer(m_render);
 	SDL_DestroyWindow(m_window);
 
@@ -36,7 +37,6 @@ GameManager::~GameManager() {
 	Mix_Quit();
 	IMG_Quit();
 	SDL_Quit();
-
 }
 
 int GameManager::run(int argc, char** argv) {
