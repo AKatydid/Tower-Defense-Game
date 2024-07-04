@@ -9,6 +9,7 @@
 #include "utils/config.h"
 
 #include "manager/config_manager.h"
+#include "manager/resource_manager.h"
 
 #include <SDL2/SDL.h>
 
