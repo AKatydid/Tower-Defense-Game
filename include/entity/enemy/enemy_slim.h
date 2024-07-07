@@ -45,7 +45,7 @@ public:
 		recover_range = slim_template.recover_range;
 		recover_intensity = slim_template.recover_intensity;
 
-		size.x = 48, size.y = 48;
+		size.x = SIZE_TILE, size.y = SIZE_TILE;
 		hp = max_hp, speed = max_speed;
 	}
 

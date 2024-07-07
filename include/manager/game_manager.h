@@ -4,6 +4,8 @@
 #include "manager/manager.h"
 #include "manager/config_manager.h"
 #include "manager/resource_manager.h"
+#include "manager/enemy_manager.h"
+#include "manager/wave_manager.h"
 #include "entity/map.h"
 
 #include "utils/config.h"

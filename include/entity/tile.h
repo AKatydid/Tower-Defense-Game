@@ -3,8 +3,6 @@
 
 #include <vector>
 
-constexpr int SIZE_TILE = 48;
-
 struct Tile
 {
 	enum class Direction

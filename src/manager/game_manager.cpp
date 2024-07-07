@@ -75,7 +75,14 @@ void GameManager::on_input() {
 }
 
 void GameManager::on_update(double delay) {
-	
+	static ConfigManager* configInstance =  ConfigManager::instance();
+
+	// [TEST] check render effect
+	if (!configInstance->is_game_over)
+	{
+		WaveManager::instance()->on_update(delay);
+		EnemyManager::instance()->on_update(delay);
+	}
 }
 
 void GameManager::on_render()
@@ -83,6 +90,9 @@ void GameManager::on_render()
 	ConfigManager* instance = ConfigManager::instance();
 	static SDL_Rect& rect_dst = instance->rect_tile_map;
 	SDL_RenderCopy(m_render, m_tex_tile_map, nullptr, &rect_dst);
+
+	// [TEST] render enemy
+	EnemyManager::instance()->on_render(m_render);
 }
 
 bool GameManager::generate_tile_map_texture()

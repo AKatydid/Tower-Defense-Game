@@ -1,0 +1,45 @@
+#ifndef _HOME_MANAGER_H_
+#define _HOME_MANAGER_H_
+
+#include "manager/enemy_manager.h"
+#include "manager/config_manager.h"
+#include "manager/resource_manager.h"
+
+
+class HomeManager : public Manager<HomeManager>
+{
+	friend class Manager<HomeManager>;
+
+public:
+	/* effect: home be attacked */
+	void decrease_hp(double val)
+	{
+		num_hp -= val;
+
+		if (num_hp < 0)
+			num_hp = 0;
+
+		static const SoundPool& sound_pool
+			= ResourcesManager::instance()->get_sound_pool();
+
+		Mix_PlayChannel(-1, sound_pool.find(ResID::Sound_HomeHurt)->second, 0);
+	}
+
+	double get_current_hp_num()const
+	{
+		return num_hp;
+	}
+
+protected:
+	HomeManager()
+	{
+		num_hp = ConfigManager::instance()->num_initial_hp;
+	}
+
+	~HomeManager() = default;
+
+private:
+	double num_hp = 0;
+};
+
+#endif // !_HOME_MANAGER_H_
