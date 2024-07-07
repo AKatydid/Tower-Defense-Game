@@ -45,6 +45,11 @@ void WaveManager::on_update(double delay)
 	if (instance->is_game_over)
 		return;
 
+	if (!is_wave_started)
+		timer_start_wave.on_update(delay);
+	else
+		timer_spawn_enemy.on_update(delay);
+
 	if (is_spawned_last_enemy && EnemyManager::instance()->check_cleared())
 	{
 		CoinManager::instance()->increase_coin(instance->wave_list[idx_wave].rawards);

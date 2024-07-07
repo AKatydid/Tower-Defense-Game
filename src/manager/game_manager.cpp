@@ -10,8 +10,8 @@ GameManager::GameManager() {
 	// load game data
 	ConfigManager* config = ConfigManager::instance();
 	init_assert(config->map.load("./asset/data/map.csv"), "Load Map data fail.");
-	init_assert(config->load_level_config("./asset/data/level.json"), u8"Load Level Data Fail.");
-	init_assert(config->load_game_config("./asset/data/config.json"), u8"Load Game Config Data Fail.");
+	init_assert(config->load_level_config("asset/data/level.json"), u8"Load Level Data Fail.");
+	init_assert(config->load_game_config("asset/data/config.json"), u8"Load Game Config Data Fail.");
 
 	// init window
 	m_window = SDL_CreateWindow(WINDOW_NAME, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);

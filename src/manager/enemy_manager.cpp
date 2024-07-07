@@ -23,7 +23,8 @@ void EnemyManager::on_update(double delay)
 
 void EnemyManager::on_render(SDL_Renderer* renderer)
 {
-
+	for (Enemy* enemy : enemy_list)
+		enemy->on_render(renderer);
 }
 
 void EnemyManager::spawn_enemy(EnemyType type, int idx_spawn_point)
@@ -89,7 +90,7 @@ void EnemyManager::spawn_enemy(EnemyType type, int idx_spawn_point)
 
 bool EnemyManager::check_cleared()
 {
-	return false;
+	return enemy_list.empty();
 }
 
 EnemyManager::EnemyList& EnemyManager::get_enemy_list()
